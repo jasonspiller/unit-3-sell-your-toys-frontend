@@ -1,0 +1,18 @@
+.ItemDetail {
+	width: 80%;
+	overflow: auto;
+	margin: 1rem auto;
+}
+
+.ItemDetail div {
+	float: left;
+	margin: 0 1rem 0 0;
+	font-size: 1.7rem;
+	text-align: center;
+}
+
+.ItemDetail img {
+	display: block;
+	clear: both;
+	width: 100%;
+}

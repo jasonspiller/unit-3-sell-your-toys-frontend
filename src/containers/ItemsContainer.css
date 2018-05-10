@@ -1,0 +1,9 @@
+.PostsContainer {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.PostsContainer ul {
+	margin: 0;
+	padding: 0;
+}
