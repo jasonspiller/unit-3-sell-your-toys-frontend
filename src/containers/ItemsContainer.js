@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-import ItemSummary from '../components/item/ItemSummary';
+//import ItemSummary from '../components/item/ItemSummary';
 import axios from 'axios';
 
 export default class ItemsContainer extends Component {
@@ -10,9 +10,9 @@ export default class ItemsContainer extends Component {
 			items: []
 		};
 	}
-	//"proxy": "https://sellyourtoys.herokuapp.com"
+
 	componentWillMount() {
-		axios.get('https://sellyourtoys.herokuapp.com/api/items').then( (results) => {
+		axios.get('/api/items').then( (results) => {
 			console.log(results);
 
 			this.setState({

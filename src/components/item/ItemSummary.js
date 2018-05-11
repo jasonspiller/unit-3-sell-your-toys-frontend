@@ -12,7 +12,7 @@ class Item extends Component {
 					<a onClick={ this.props.vote(this.props._id, (this.props.votes - 1)) }>-</a>
 				</div>
 				<Link to={ `/posts/${this.props._id}` } className="ItemLink-content">
-          <img src={ this.props.thumbnail_image_url }/>
+          <img src={ this.props.thumbnail_image_url } alt={ this.props.title } />
           <h2>{ this.props.title }</h2>
         </Link>
       </li>
