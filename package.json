@@ -22,7 +22,6 @@
     "sass": "node-sass src/styles/src/index.scss -o src/styles/css/index.css",
     "sass:watch": "node-sass src/styles/src -wo src/styles/css"
   },
-  "proxy": "https://sellyourtoys.herokuapp.com",
   "devDependencies": {
     "sass": "^1.3.2"
   }

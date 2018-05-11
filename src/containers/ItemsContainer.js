@@ -1,8 +1,27 @@
 import React, { Component } from 'react';
+import { Grid, Row, Col } from 'react-bootstrap';
 import ItemSummary from '../components/item/ItemSummary';
 import axios from 'axios';
 
 export default class ItemsContainer extends Component {
+	constructor() {
+		super();
+		this.state = {
+			items: []
+		};
+	}
+	//"proxy": "https://sellyourtoys.herokuapp.com"
+	componentWillMount() {
+		axios.get('https://sellyourtoys.herokuapp.com/api/items').then( (results) => {
+			console.log(results);
+
+			this.setState({
+				items: results.data
+			});
+		})
+	}
+
+
   // constructor() {
   //   super();
   //   this.state = {
@@ -102,29 +121,43 @@ export default class ItemsContainer extends Component {
   render() {
 
     return (
-      <section>
-				{/* <h2>List of Posts</h2>
-				<ul>
-					{ this.state.posts.map( (post) => {
-            return <ItemSummary
-              key={ post._id }
-              vote={ this.vote }
-              { ... post } />
-          }) }
-				</ul>
-				<form onSubmit={this.onFormSubmit}>
-					<label htmlFor="title">Title
-						<input id="title" onChange={this.onTitleChange} />
-					</label>
-					<label htmlFor="content">Content
-						<input id="content" onChange={this.onContentChange} />
-					</label>
-					<label htmlFor="image">Image
-						<input id="image" onChange={this.onImageChange} />
-					</label>
-					<button type="submit">Submit</button>
-				</form> */}
-      </section>
+			<Grid fluid={true} componentClass={'main'}>
+				<Row className="show-grid">
+					<Col xs={10} xsOffset={1}>
+						<h2>All Items</h2>
+						<ul>
+							{ this.state.items.map( (item) => {
+								return `<li>${item.title}</li>`
+							}) }
+						</ul>
+
+
+						{/* <h2>List of Posts</h2>
+						<ul>
+							{ this.state.posts.map( (post) => {
+								return <ItemSummary
+									key={ post._id }
+									vote={ this.vote }
+									{ ... post } />
+							}) }
+						</ul>
+						<form onSubmit={this.onFormSubmit}>
+							<label htmlFor="title">Title
+								<input id="title" onChange={this.onTitleChange} />
+							</label>
+							<label htmlFor="content">Content
+								<input id="content" onChange={this.onContentChange} />
+							</label>
+							<label htmlFor="image">Image
+								<input id="image" onChange={this.onImageChange} />
+							</label>
+							<button type="submit">Submit</button>
+						</form> */}
+
+
+					</Col>
+				</Row>
+			</Grid>
     );
   }
 }
