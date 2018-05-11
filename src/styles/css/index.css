@@ -6454,6 +6454,9 @@ a:hover, a:visited, a:active {
   background-color: #d32828;
   border-color: #D54543; }
 
+header {
+  text-align: center; }
+
 .jumbotron {
   padding: 2rem 1rem;
   text-align: center; }

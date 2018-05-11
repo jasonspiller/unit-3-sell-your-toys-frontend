@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './ItemSummary.css';
 import { Link } from 'react-router-dom';
 
 class Item extends Component {

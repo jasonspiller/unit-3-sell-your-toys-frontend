@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './PostContainer.css';
 import ItemDetail from '../components/item/ItemDetail';
 import axios from 'axios';
 
-class PostContainer extends Component {
+export default class ItemContainer extends Component {
   constructor() {
     super();
     this.state = {
@@ -36,5 +35,3 @@ class PostContainer extends Component {
     );
   }
 }
-
-export default PostContainer;

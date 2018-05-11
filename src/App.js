@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
+import Routes from "./Routes";
 import Footer from './components/Footer';
 import axios from 'axios';
 
-class App extends Component {
+export default class App extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -25,6 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+				<Routes />
 				<ul>
 					{ this.state.items.map( (item) => {
             return `<li>${item.title}</li>`
@@ -35,5 +37,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
