@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import axios from 'axios';
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
             return `<li>${item.title}</li>`
           }) }
 				</ul>
+				<Footer />
       </div>
     );
   }
