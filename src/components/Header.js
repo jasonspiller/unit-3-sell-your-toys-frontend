@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import './Header.css';
+import { Jumbotron, Button } from 'react-bootstrap';
 
 class Header extends Component {
   render() {
     return (
 			<header>
-				<h1>
-					$ell Your Toys
-					<br />
-					<span className="tagline">Best BST Ever</span>
-				</h1>
+				<Jumbotron>
+					<h1>$ell Your Toys</h1>
+					<p className="tagline">The Best BST Ever.</p>
+				</Jumbotron>
 			</header>
     );
   }

@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,800|Righteous");
+/* variables */
+body {
+  background: #fff url("/img/concrete-seamless.png") top left repeat scroll;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px; }
+
+a {
+  color: #D54543; }
+
+a:hover, a:visited, a:active {
+  color: #D54543; }
+
+.dark-semi-transparent {
+  background: rgba(33, 37, 41, 0.5); }
+
+.btn-primary {
+  background: #D54543;
+  border-color: #d32828; }
+
+.btn.btn-primary:hover,
+.btn.btn-primary:focus,
+.btn.btn-primary:active,
+.btn.btn-primary.active {
+  color: #ffffff;
+  background-color: #d32828;
+  border-color: #D54543; }

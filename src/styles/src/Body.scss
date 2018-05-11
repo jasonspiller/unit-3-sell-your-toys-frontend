@@ -1,0 +1,43 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,800|Righteous');
+
+/* variables */
+$font-display: 'Righteous', sans-serif;
+$font-body: 'Montserrat', sans-serif;
+$action: #D54543;
+$action-dark: #d32828;
+$dark-gray: rgba(33,37,41,1);
+$dark-gray-semi: rgba(33,37,41,.5);
+
+
+body {
+	background: #fff url('/img/concrete-seamless.png') top left repeat scroll;
+	font-family: $font-body;
+	font-size: 16px;
+}
+
+a {
+	color: $action;
+}
+
+a:hover, a:visited, a:active {
+	color: $action;
+}
+
+.dark-semi-transparent {
+	background: $dark-gray-semi;
+}
+
+.btn-primary {
+	background: $action;
+	border-color: $action-dark;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:focus,
+.btn.btn-primary:active,
+.btn.btn-primary.active {
+  color: #ffffff;
+  background-color: $action-dark;
+  border-color: $action;
+}
