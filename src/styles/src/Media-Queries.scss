@@ -1,6 +1,36 @@
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 
+	.jumbotron h1, .tagline {
+		display: block;
+	}
+
+	.navbar-brand {
+		visibility: hidden;
+	}
+
+	// collapses navbar at the xs breakpoint
+	.navbar-right {
+    float: right!important;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: auto!important;
+    overflow: visible!important;
+    border: none;
+    margin-right: 15px;
+  }
+  .navbar-nav > li {
+    float: left;
+    margin: 5px 0;
+  }
+  .navbar-header {
+    float: left
+  }
+  .navbar-toggle {
+    display: none
+  }
+
 }
 
 /* Medium devices (tablets, 768px and up) */

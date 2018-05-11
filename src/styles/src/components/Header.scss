@@ -1,0 +1,28 @@
+.jumbotron {
+	padding: 2rem 1rem;
+	text-align: center;
+}
+
+.jumbotron h1 {
+	display: none;
+	font-family: $font-display;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .5rem;
+}
+
+.dollar {
+	font-family: $font-body;
+}
+
+.tagline {
+	display: none;
+}
+
+.jumbotron button {
+	width: 30%;
+	margin: 1rem;
+	padding: 1rem .5rem;
+	font-weight: 700;
+	letter-spacing: .25rem;
+}

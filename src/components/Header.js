@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
-import { Jumbotron } from 'react-bootstrap';
+import Menu from './Menu'
+import { Jumbotron, Button } from 'react-bootstrap';
 
-class Header extends Component {
+export default class Header extends Component {
   render() {
     return (
 			<header>
+				<Menu />
 				<Jumbotron>
-					<h1>$ell Your Toys</h1>
-					<p className="tagline">The Best BST Ever.</p>
+					<h1>
+						<span	className="dollar">$</span>ell Your Toys
+					</h1>
+					<p className="tagline">
+						The Best BST Ever.
+					</p>
+
+					<Button bsStyle="primary">Search</Button>
+					<Button bsStyle="primary">Post</Button>
+
 				</Jumbotron>
 			</header>
     );
   }
 }
-
-export default Header;
