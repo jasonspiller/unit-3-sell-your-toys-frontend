@@ -6456,6 +6456,9 @@ a:hover, a:visited, a:active {
 .mb-15 {
   margin-bottom: 15px; }
 
+.no-padding {
+  padding: 0; }
+
 header {
   text-align: center; }
 
@@ -6477,7 +6480,7 @@ header {
   display: none; }
 
 .jumbotron button {
-  width: 30%;
+  min-width: 30%;
   margin: 1rem;
   padding: 1rem .5rem;
   font-weight: 700;
@@ -6500,6 +6503,15 @@ header {
 
 footer {
   margin-top: 5rem; }
+
+.PostContainer .help {
+  font-weight: 400;
+  font-size: 1.25rem; }
+
+.PostContainer button {
+  display: block;
+  min-width: 40%;
+  margin: 0 auto; }
 
 .ItemSummary .image {
   max-width: 20rem;
