@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Grid, Row, Col } from 'react-bootstrap';
 
-class Item extends Component {
+export default class Item extends Component {
 
   render() {
     return (
-      <li className="ItemSummary">
-				<div>
-					<a onClick={ this.props.vote(this.props.post_id, (this.props.votes + 1)) }>+</a><br />
-					{ this.props.votes }<br />
-					<a onClick={ this.props.vote(this.props._id, (this.props.votes - 1)) }>-</a>
-				</div>
-				<Link to={ `/posts/${this.props._id}` } className="ItemLink-content">
-          <img src={ this.props.thumbnail_image_url } alt={ this.props.title } />
-          <h2>{ this.props.title }</h2>
-        </Link>
-      </li>
+			<Grid fluid={true}>
+				<Row className={ "ItemSummary mb-15" }>
+					<Col md={2} sm={3} className="image">
+						<Link to={ `/items/${this.props._id}` }>
+							<img src={ this.props.image } alt={ this.props.title } />
+						</Link>
+					</Col>
+					<Col md={9} sm={8} >
+						<Link to={ `/items/${this.props._id}` }>
+							<h2 dangerouslySetInnerHTML={{__html: this.props.title }}></h2>
+						</Link>
+						<p>{ this.props.date }</p>
+						<p>{ this.props.description }</p>
+					</Col>
+					<Col sm={1}>
+						<h2 className="price" dangerouslySetInnerHTML={{__html: this.props.price }}></h2>
+					</Col>
+				</Row>
+			</Grid>
     );
   }
 }
-
-export default Item;

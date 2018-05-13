@@ -35,7 +35,12 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-
+	.ItemSummary {
+		height: 14rem;
+	}
+	.ItemSummary .price {
+		text-align: right;
+	}
 }
 
 /* Large devices (desktops, 992px and up) */

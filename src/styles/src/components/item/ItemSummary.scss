@@ -1,0 +1,23 @@
+.ItemSummary .image {
+	max-width: 20rem;
+	max-height: 14rem;
+	overflow: hidden;
+	text-align: center;
+}
+
+.ItemSummary img {
+	width: 100%
+}
+
+.ItemSummary h2 {
+	margin: 0;
+}
+
+.ItemSummary .date {
+	font-size: 2rem;
+	color: #000;
+}
+
+.ItemSummary .price {
+	font-weight: 700;
+}

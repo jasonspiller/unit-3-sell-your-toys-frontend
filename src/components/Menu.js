@@ -25,9 +25,9 @@ export default class Menu extends Component {
 						<LinkContainer to="/post">
 			      	<NavItem eventKey={3}>Post</NavItem>
 						</LinkContainer>
-						<LinkContainer to="/items">
+						<IndexLinkContainer to="/items">
 			      	<NavItem eventKey={4}>All Items</NavItem>
-						</LinkContainer>
+						</IndexLinkContainer>
 			    </Nav>
 			  </Navbar.Collapse>
 			</Navbar>

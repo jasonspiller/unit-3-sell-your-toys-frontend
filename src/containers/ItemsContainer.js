@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-//import ItemSummary from '../components/item/ItemSummary';
+import ItemSummary from '../components/item/ItemSummary';
 import axios from 'axios';
+import moment from 'moment';
 
 export default class ItemsContainer extends Component {
 	constructor() {
@@ -9,15 +10,67 @@ export default class ItemsContainer extends Component {
 		this.state = {
 			items: []
 		};
+
+		this.sortAndFormatData = this.sortAndFormatData.bind(this);
 	}
 
-	componentWillMount() {
+	// sort by date and format date
+	sortAndFormatData = (items) => {
+
+		// sort newest first (add radix to avoid warnings)
+		let arrSorted = items.sort( (item1, item2) => {
+			return parseInt(item2.date, 10) - parseInt(item1.date, 10)
+		})
+
+		// format the date and time
+		const formatTitle = (str) => {
+			if(arrSorted[item].sold) {
+				arrSorted[item].title = `<strong>SOLD</strong> ${arrSorted[item].title} <strong>SOLD</strong>`
+			} else {
+				arrSorted[item].title = `${arrSorted[item].title}`
+			}
+		}
+
+		// format the date and time
+		const formatTime = (str) => {
+			let formattedDate = new Date();
+			formattedDate.setTime(str);
+			arrSorted[item].date = moment(formattedDate).format('lll');
+		}
+
+		// format description
+		const formatDesc = (str) => {
+			if(str.length > 175) {
+				arrSorted[item].description = arrSorted[item].description.substr(0,140) + '...'
+			}
+
+		}
+
+		// format price
+		const formatPrice = (str) => {
+			if(arrSorted[item].sold) {
+				arrSorted[item].price = `$<s>${arrSorted[item].price}</s>`
+			} else {
+				arrSorted[item].price = `$${arrSorted[item].price}`
+			}
+		}
+
+		for (var item in arrSorted) {
+			formatTitle(arrSorted[item].title);
+			formatTime(arrSorted[item].date);
+			formatDesc(arrSorted[item].description);
+			formatPrice(arrSorted[item].price);
+		}
+
+		this.setState({
+			items: arrSorted
+		});
+	}
+
+	componentDidMount() {
 		axios.get('/api/items').then( (results) => {
 			console.log(results);
-
-			this.setState({
-				items: results.data
-			});
+			this.sortAndFormatData(results.data);
 		})
 	}
 
@@ -122,41 +175,36 @@ export default class ItemsContainer extends Component {
 
     return (
 			<Grid fluid={true} componentClass={'main'}>
-				<Row className="show-grid">
+				<Row className="mb-15">
 					<Col xs={10} xsOffset={1}>
 						<h2>All Items</h2>
-						<ul>
-							{ this.state.items.map( (item) => {
-								return `<li>${item.title}</li>`
-							}) }
-						</ul>
-
-
-						{/* <h2>List of Posts</h2>
-						<ul>
-							{ this.state.posts.map( (post) => {
-								return <ItemSummary
-									key={ post._id }
-									vote={ this.vote }
-									{ ... post } />
-							}) }
-						</ul>
-						<form onSubmit={this.onFormSubmit}>
-							<label htmlFor="title">Title
-								<input id="title" onChange={this.onTitleChange} />
-							</label>
-							<label htmlFor="content">Content
-								<input id="content" onChange={this.onContentChange} />
-							</label>
-							<label htmlFor="image">Image
-								<input id="image" onChange={this.onImageChange} />
-							</label>
-							<button type="submit">Submit</button>
-						</form> */}
-
-
 					</Col>
 				</Row>
+				<Row>
+					<Col xs={10} xsOffset={1}>
+						{ this.state.items.map( (item) => {
+							return <ItemSummary
+								key={ item._id }
+								{ ... item } />
+						}) }
+					</Col>
+				</Row>
+
+
+				{/*
+				<form onSubmit={this.onFormSubmit}>
+					<label htmlFor="title">Title
+						<input id="title" onChange={this.onTitleChange} />
+					</label>
+					<label htmlFor="content">Content
+						<input id="content" onChange={this.onContentChange} />
+					</label>
+					<label htmlFor="image">Image
+						<input id="image" onChange={this.onImageChange} />
+					</label>
+					<button type="submit">Submit</button>
+				</form> */}
+
 			</Grid>
     );
   }

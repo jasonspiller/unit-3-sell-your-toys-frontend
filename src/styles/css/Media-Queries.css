@@ -21,5 +21,11 @@
     display: none; } }
 
 /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .ItemSummary {
+    height: 14rem; }
+  .ItemSummary .price {
+    text-align: right; } }
+
 /* Large devices (desktops, 992px and up) */
 /* Extra large devices (large desktops, 1200px and up) */
