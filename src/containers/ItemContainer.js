@@ -25,7 +25,7 @@ export default class ItemContainer extends Component {
 		// add SOLD to the beginning and end of the title if sold
 		const formatTitle = () => {
 			if (item.sold) {
-				item.title = {__html: `<strong>SOLD</strong> ${item.title} <strong>SOLD</strong>`};
+				item.title = {__html: `<strong>SOLD</strong> ${item.title}`};
 			} else {
 				item.title = {__html: `${item.title}`};
 			}

@@ -25,7 +25,7 @@ export default class ItemsContainer extends Component {
 		// format the date and time
 		const formatTitle = (str) => {
 			if(arrSorted[item].sold) {
-				arrSorted[item].title = `<strong>SOLD</strong> ${arrSorted[item].title} <strong>SOLD</strong>`
+				arrSorted[item].title = `<strong>SOLD</strong> ${arrSorted[item].title}`
 			} else {
 				arrSorted[item].title = `${arrSorted[item].title}`
 			}
@@ -68,10 +68,13 @@ export default class ItemsContainer extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('/api/items').then( (results) => {
+		axios.get('https://sellyourtoys.herokuapp.com/api/items').then( (results) => {
 			console.log(results);
 			this.sortAndFormatData(results.data);
 		})
+
+		//"proxy": "https://sellyourtoys.herokuapp.com"
+
 	}
 
 

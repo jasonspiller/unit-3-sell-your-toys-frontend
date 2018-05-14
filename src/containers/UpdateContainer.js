@@ -28,7 +28,7 @@ class UpdateContainer extends Component {
 				price: result.data.price.toString(),
 				condition: result.data.condition,
 				zip: result.data.zip.toString(),
-				email: result.data.emailm,
+				email: result.data.email,
 				image: result.data.image,
 				description: result.data.description,
 				sold: result.data.sold
@@ -81,7 +81,7 @@ class UpdateContainer extends Component {
 	}
 
 	getEmailValidationState() {
-		const length = this.state.price.length;
+		const length = this.state.email.length;
 		if (length > 0) return 'success';
 		else if (length > 0) return 'error';
 		return null;
@@ -94,7 +94,7 @@ class UpdateContainer extends Component {
 			this.state.condition.length > 0 &&
 			this.state.condition.length !== 6 &&
 			this.state.zip.length > 0 &&
-			this.state.email.length >0
+			this.state.email.length > 0
 		) return true;
   }
 
@@ -196,7 +196,7 @@ class UpdateContainer extends Component {
 									</Col>
 								</Row>
 							</Grid>
-							<FormGroup bsSize="large" controlId="email">
+							<FormGroup bsSize="large" controlId="email" validationState={this.getEmailValidationState()}>
 								<ControlLabel>Email</ControlLabel>
 								<FormControl
 									type="email"
