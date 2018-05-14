@@ -1,28 +1,54 @@
 import React, { Component } from "react";
-import { Grid, Row, Col, FormGroup, InputGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Grid, Row, Col, FormGroup, InputGroup, ControlLabel, FormControl, Button, Checkbox } from 'react-bootstrap';
 import { withRouter } from "react-router-dom";
 import axios from 'axios';
 
-class PostContainer extends Component {
+class UpdateContainer extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			id: '',
 			title: '',
 			price: '',
 			condition: '',
 			zip: '',
+			email: '',
 			image: '',
-			description: ''
+			description: '',
+			sold: false
 		};
 
+		this.state.id = this.props.location.pathname.split('/')[2];
+
+		axios.get(`/api/items/${ this.state.id }`).then( (result) => {
+
+			this.setState ({
+				title: result.data.title,
+				price: result.data.price.toString(),
+				condition: result.data.condition,
+				zip: result.data.zip.toString(),
+				email: result.data.emailm,
+				image: result.data.image,
+				description: result.data.description,
+				sold: result.data.sold
+			});
+		})
+
 		this.handleChange = this.handleChange.bind(this);
+		this.handleChangeCheckbox = this.handleChangeCheckbox.bind(this);
 		this.validateForm = this.validateForm.bind(this);
 	}
 
 	handleChange = e => {
     this.setState({
       [e.target.id]: e.target.value
+    });
+  }
+
+	handleChangeCheckbox = e => {
+    this.setState({
+      [e.target.id]: e.target.checked
     });
   }
 
@@ -54,14 +80,21 @@ class PostContainer extends Component {
 		return null;
 	}
 
+	getEmailValidationState() {
+		const length = this.state.price.length;
+		if (length > 0) return 'success';
+		else if (length > 0) return 'error';
+		return null;
+	}
+
 	validateForm() {
-		console.log(`${this.state.title.length} ${this.state.price.length} ${this.state.condition.length} ${this.state.zip.length}`);
 		if(
 			this.state.title.length > 0 &&
 			this.state.price.length > 0 &&
 			this.state.condition.length > 0 &&
 			this.state.condition.length !== 6 &&
-			this.state.zip.length > 0
+			this.state.zip.length > 0 &&
+			this.state.email.length >0
 		) return true;
   }
 
@@ -73,16 +106,19 @@ class PostContainer extends Component {
 			price: this.state.price,
 			condition: this.state.condition,
 			zip: this.state.zip,
+			email: this.state.email,
 			image: this.state.image,
-			description: this.state.description
+			description: this.state.description,
+			sold: document.getElementById('sold').checked
 		}
 
 		console.log(formData);
 
-		axios.post(`/api/items`, formData).then( (result) => {
+		axios.put(`/api/items/${ this.state.id }`, formData).then( (result) => {
+
 			console.log(result);
 
-     	this.props.history.push('/items');
+     	this.props.history.push(`/items/${ this.state.id }`);
 		})
 	}
 
@@ -92,7 +128,7 @@ class PostContainer extends Component {
 			<Grid fluid={true} componentClass={'main'} className="PostContainer">
 				<Row className="mb-15">
 					<Col xs={10} xsOffset={1}>
-						<h2>Post a Toy</h2>
+						<h2>Update a Toy</h2>
 					</Col>
 				</Row>
 				<Row className="mb-15">
@@ -135,6 +171,7 @@ class PostContainer extends Component {
 												placeholder="select"
 												name="condition"
 												bsSize="large"
+												value={this.state.condition}
 												onChange={this.handleChange}
 											>
 												<option value="select">Please Select</option>
@@ -159,6 +196,17 @@ class PostContainer extends Component {
 									</Col>
 								</Row>
 							</Grid>
+							<FormGroup bsSize="large" controlId="email">
+								<ControlLabel>Email</ControlLabel>
+								<FormControl
+									type="email"
+									value={this.state.email}
+									name="email"
+									onChange={this.handleChange}
+									required
+								/>
+								<FormControl.Feedback />
+							</FormGroup>
 							<FormGroup bsSize="large" controlId="image">
 								<ControlLabel>Image Url <span className="help">(optional)</span></ControlLabel>
 								<FormControl
@@ -180,6 +228,14 @@ class PostContainer extends Component {
 								/>
 								<FormControl.Feedback />
 							</FormGroup>
+							<Checkbox
+								id="sold"
+								checked={this.state.sold}
+								className="text-center"
+								onChange={this.handleChangeCheckbox}
+							>
+					      <strong>Sold</strong>
+					    </Checkbox>
 							<Button
 								type="submit"
 								bsSize="large"
@@ -194,4 +250,4 @@ class PostContainer extends Component {
 	}
 }
 
-export default withRouter(PostContainer);
+export default withRouter(UpdateContainer);
