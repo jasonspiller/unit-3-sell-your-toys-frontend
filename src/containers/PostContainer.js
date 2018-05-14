@@ -12,6 +12,7 @@ class PostContainer extends Component {
 			price: '',
 			condition: '',
 			zip: '',
+			email: '',
 			image: '',
 			description: ''
 		};
@@ -54,6 +55,13 @@ class PostContainer extends Component {
 		return null;
 	}
 
+	getEmailValidationState() {
+		const length = this.state.email.length;
+		if (length > 0) return 'success';
+		else if (length > 0) return 'error';
+		return null;
+	}
+
 	validateForm() {
 		console.log(`${this.state.title.length} ${this.state.price.length} ${this.state.condition.length} ${this.state.zip.length}`);
 		if(
@@ -61,7 +69,8 @@ class PostContainer extends Component {
 			this.state.price.length > 0 &&
 			this.state.condition.length > 0 &&
 			this.state.condition.length !== 6 &&
-			this.state.zip.length > 0
+			this.state.zip.length > 0 &&
+				this.state.email.length > 0
 		) return true;
   }
 
@@ -73,6 +82,7 @@ class PostContainer extends Component {
 			price: this.state.price,
 			condition: this.state.condition,
 			zip: this.state.zip,
+			email: this.state.email,
 			image: this.state.image,
 			description: this.state.description
 		}
@@ -159,6 +169,17 @@ class PostContainer extends Component {
 									</Col>
 								</Row>
 							</Grid>
+							<FormGroup bsSize="large" controlId="email" validationState={this.getEmailValidationState()}>
+								<ControlLabel>Email</ControlLabel>
+								<FormControl
+									type="email"
+									value={this.state.email}
+									name="email"
+									onChange={this.handleChange}
+									required
+								/>
+								<FormControl.Feedback />
+							</FormGroup>
 							<FormGroup bsSize="large" controlId="image">
 								<ControlLabel>Image Url <span className="help">(optional)</span></ControlLabel>
 								<FormControl
