@@ -22,6 +22,7 @@ export default class ItemDetail extends Component {
 						<p>Condition: <strong>{ this.props.condition }</strong></p>
 						<p>Posted: <strong>{ this.props.date }</strong></p>
 						<p>Zip: <strong>{ this.props.zip }</strong></p>
+						<p>Email: <strong><a href={`mailto:${this.props.email}`}>{ this.props.email }</a></strong></p>
 					</Col>
 				</Row>
 			</Grid>
