@@ -21,7 +21,7 @@ class UpdateContainer extends Component {
 
 		this.state.id = this.props.location.pathname.split('/')[2];
 
-		axios.get(`/api/items/${ this.state.id }`).then( (result) => {
+		axios.get(`https://sellyourtoys.herokuapp.com/api/items/${ this.state.id }`).then( (result) => {
 
 			this.setState ({
 				title: result.data.title,
@@ -114,7 +114,7 @@ class UpdateContainer extends Component {
 
 		console.log(formData);
 
-		axios.put(`/api/items/${ this.state.id }`, formData).then( (result) => {
+		axios.put(`https://sellyourtoys.herokuapp.com/api/items/${ this.state.id }`, formData).then( (result) => {
 
 			console.log(result);
 

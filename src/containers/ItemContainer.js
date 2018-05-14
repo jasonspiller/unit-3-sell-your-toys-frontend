@@ -60,7 +60,7 @@ export default class ItemContainer extends Component {
 
 	componentDidMount() {
 		let itemId = this.getCurrentItemId();
-		axios.get(`/api/items/${itemId}`).then( (result) => {
+		axios.get(`https://sellyourtoys.herokuapp.com/api/items/${itemId}`).then( (result) => {
 			console.log(result);
 			this.formatData(result.data);
 		})

@@ -79,7 +79,7 @@ class PostContainer extends Component {
 
 		console.log(formData);
 
-		axios.post(`/api/items`, formData).then( (result) => {
+		axios.post(`https://sellyourtoys.herokuapp.com/api/items`, formData).then( (result) => {
 			console.log(result);
 
      	this.props.history.push('/items');
