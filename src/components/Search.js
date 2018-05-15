@@ -124,12 +124,7 @@ export default class Search extends Component {
 						</form>
 					</Col>
 				</Row>
-				<Row className="mb-15">
-					<Col>
-						<h2>Search Results</h2>
-					</Col>
-				</Row>
-				<Row>
+				<Row className="mt-30">
 					<Col>
 						{ this.state.items.map( (item) => {
 							return <ItemSummary
