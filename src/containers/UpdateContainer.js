@@ -122,10 +122,21 @@ class UpdateContainer extends Component {
 		})
 	}
 
+	handleDelete = async e => {
+		e.preventDefault();
+
+		axios.delete(`https://sellyourtoys.herokuapp.com/api/items/${ this.state.id }`).then( (result) => {
+
+			console.log(result);
+
+     	this.props.history.push(`/items`);
+		})
+	}
+
 
 	render() {
 		return (
-			<Grid fluid={true} componentClass={'main'} className="PostContainer">
+			<Grid fluid={true} componentClass={'main'} className="UpdateContainer">
 				<Row className="mb-15">
 					<Col xs={10} xsOffset={1}>
 						<h2>Update a Toy</h2>
@@ -237,11 +248,17 @@ class UpdateContainer extends Component {
 					      <strong>Sold</strong>
 					    </Checkbox>
 							<Button
+								className="mb-15"
 								type="submit"
 								bsSize="large"
 								bsStyle="primary"
 								disabled={!this.validateForm()}
-							>Submit</Button>
+							>Update</Button>
+							<Button
+								type="button"
+								id="delete"
+								onClick={this.handleDelete}
+							>Delete</Button>
 						</form>
 					</Col>
 				</Row>

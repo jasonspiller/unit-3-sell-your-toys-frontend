@@ -83,8 +83,11 @@ class PostContainer extends Component {
 			condition: this.state.condition,
 			zip: this.state.zip,
 			email: this.state.email,
-			image: this.state.image,
 			description: this.state.description
+		}
+
+		if(this.state.image !== '') {
+			formData.image = this.state.image
 		}
 
 		console.log(formData);

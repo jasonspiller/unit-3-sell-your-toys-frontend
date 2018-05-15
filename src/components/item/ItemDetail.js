@@ -7,7 +7,7 @@ export default class ItemDetail extends Component {
 			<Grid fluid={ true } className="ItemDetail">
 				<Row className="mb-15">
 					<Col>
-						<h2 dangerouslySetInnerHTML={ this.props.title }></h2>
+						<h2 dangerouslySetInnerHTML={{__html: this.props.title }}></h2>
 					</Col>
 				</Row>
 				<Row>
@@ -17,7 +17,7 @@ export default class ItemDetail extends Component {
 						</a>
 					</Col>
 					<Col md={6}>
-						<h2 className={"mb-15 price"} dangerouslySetInnerHTML={ this.props.price }></h2>
+						<h2 className={"mb-15 price"} dangerouslySetInnerHTML={{__html:  this.props.price }}></h2>
 						<p>{ this.props.description }</p>
 						<p>Condition: <strong>{ this.props.condition }</strong></p>
 						<p>Posted: <strong>{ this.props.date }</strong></p>

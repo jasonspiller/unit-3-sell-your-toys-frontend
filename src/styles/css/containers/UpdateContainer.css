@@ -1,8 +1,11 @@
-.PostContainer .help {
+.UpdateContainer .help {
   font-weight: 400;
   font-size: 1.25rem; }
 
-.PostContainer button {
+.UpdateContainer button {
   display: block;
   min-width: 40%;
   margin: 0 auto 15px; }
+
+.UpdateContainer #delete {
+  min-width: auto; }

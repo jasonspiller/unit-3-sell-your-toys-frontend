@@ -6504,6 +6504,11 @@ header {
 footer {
   margin-top: 5rem; }
 
+.Search button {
+  display: block;
+  min-width: 40%;
+  margin: 0 auto; }
+
 .PostContainer .help {
   font-weight: 400;
   font-size: 1.25rem; }
@@ -6511,7 +6516,19 @@ footer {
 .PostContainer button {
   display: block;
   min-width: 40%;
-  margin: 0 auto; }
+  margin: 0 auto 15px; }
+
+.UpdateContainer .help {
+  font-weight: 400;
+  font-size: 1.25rem; }
+
+.UpdateContainer button {
+  display: block;
+  min-width: 40%;
+  margin: 0 auto 15px; }
+
+.UpdateContainer #delete {
+  min-width: auto; }
 
 .ItemSummary .image {
   max-width: 20rem;
