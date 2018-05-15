@@ -186,8 +186,8 @@ class UpdateContainer extends Component {
 												onChange={this.handleChange}
 											>
 												<option value="select">Please Select</option>
-												<option value="new">New</option>
-												<option value="used">Used</option>
+												<option value="New">New</option>
+												<option value="Used">Used</option>
 											</FormControl>
 											<FormControl.Feedback />
 										</FormGroup>
